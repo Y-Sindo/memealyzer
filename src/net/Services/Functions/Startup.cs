@@ -51,12 +51,12 @@ namespace Memealyzer
             {
                 using var listener = AzureEventSourceListener.CreateConsoleLogger();
 
-                settings.Add("AzureSignalRConnectionString:serviceUri", Config.SignalREndpoint.ToString());
+                settings.Add("SignalRConnection:serviceUri", Config.SignalREndpoint.ToString());
                 settings.Add("ServiceBusConnection:fullyQualifiedNamespace", Config.ServiceBusNamespace);
 
                 if (Config.UseAzuriteQueue)
                 {
-                    // If using AzuriteQueue, then we need to use the Azurite connection string that has proxy settings 
+                    // If using AzuriteQueue, then we need to use the Azurite connection string that has proxy settings
                     settings.Add("StorageConnection", Config.AzuriteProxyConnectionString);
 
                     // NONE OF THE SETTINGS BELOW WORKED. See Configure method above for what worked.
